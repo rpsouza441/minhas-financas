@@ -1,9 +1,6 @@
 package br.dev.rodrigopinheiro.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.UUID;
@@ -17,6 +14,7 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(name="nome", nullable = true, length = 256)
     private String nome;
 
 }

@@ -14,41 +14,48 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 @Builder
-@Entity(name = "receita")
-public class Receita {
+@Entity(name = "transferencia")
+public class Transferencia {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private UUID id ;
 
-    @Column(name = "descricao", nullable = true, length = 256)
-    private String descricao = "";
+    @Column(name="descricao", nullable = true, length = 256)
+    private String descricao="";
 
     @Column(name = "observacao", nullable = true, length = 256)
-    private String observacao = "";
+    private String observacao= "";
 
-    @Column(name = "valor", nullable = false)
-    private BigDecimal valor = BigDecimal.ZERO;
+    @Column(name="valor", nullable = false)
+    private BigDecimal valor= BigDecimal.ZERO;
 
-    @Column(name = "recorrente", nullable = false)
+    @Column(name="recorrente",nullable = false)
     private boolean recorrente = false;
 
-    @Column(name = "efetivada", nullable = false)
-    private boolean efetivada = false;
+    @Column(name="efetivada",nullable = false)
+    private boolean efetivada= false;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "data_vencimento", nullable = false)
+    @Column(name="data_vencimento", nullable = false)
     private Date dataVencimento = null;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "data_lancamento", nullable = false)
+    @Column(name="data_lancamento", nullable = false)
     private Date dataLancamento = null;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "data_efetivado", nullable = true)
+    @Column(name="data_efetivado", nullable = true)
     private Date dataEfetivado = null;
 
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
+    @ManyToOne
+    @JoinColumn(name = "conta_saida")
+    private Conta contaSaida;
+
+    @ManyToOne
+    @JoinColumn(name = "conta_entrada")
+    private Conta contaEntrada;
 }

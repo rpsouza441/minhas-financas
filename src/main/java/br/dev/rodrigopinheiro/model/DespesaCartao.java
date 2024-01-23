@@ -14,8 +14,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 @Builder
-@Entity(name = "receita")
-public class Receita {
+@Entity(name = "despesa_cartao")
+public class DespesaCartao {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -36,19 +36,27 @@ public class Receita {
     private boolean efetivada = false;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "data_vencimento", nullable = false)
-    private Date dataVencimento = null;
+    @Column(name = "mes_ano_fatura", nullable = false)
+    private Date mesAnoFatura = null;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "data_lancamento", nullable = false)
     private Date dataLancamento = null;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "data_efetivado", nullable = true)
-    private Date dataEfetivado = null;
 
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
+
+    //TO-DO
+    /*   @ManyToOne(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "cartao_de_credito_despesa",
+            joinColumns = @JoinColumn(name = "despesa_id"),
+            inverseJoinColumns = @JoinColumn(name = "cartao_id")
+    )*/
+    @ManyToOne
+    @JoinColumn(name = "cartao_credito")
+    private CartaoCredito cartaoCredito;
 
 }
