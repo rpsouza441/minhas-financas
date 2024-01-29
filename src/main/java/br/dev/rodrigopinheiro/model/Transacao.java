@@ -14,8 +14,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 @Builder
-@Entity(name = "receita")
-public class Receita {
+@Entity(name = "transacao")
+public class Transacao {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -28,6 +28,10 @@ public class Receita {
 
     @Column(name = "valor", nullable = false)
     private BigDecimal valor = BigDecimal.ZERO;
+
+    @Column(name = "tipo_transacao", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    private TipoTransacao tipoTransacao;
 
     @Column(name = "recorrente", nullable = false)
     private boolean recorrente = false;
@@ -50,5 +54,15 @@ public class Receita {
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
+
+    @ManyToOne
+    @JoinColumn(name = "conta_id")
+    private Conta conta;
+
+    @OneToOne(mappedBy = "transacao", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    //@PrimaryKeyJoinColumn
+    private Fatura fatura;
+
 
 }

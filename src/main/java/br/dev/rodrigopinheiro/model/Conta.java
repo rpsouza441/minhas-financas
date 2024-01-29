@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -24,5 +25,8 @@ public class Conta {
 
     @Column(name = "saldo", nullable = false)
     private BigDecimal saldo = BigDecimal.ZERO;
+
+    @OneToMany(mappedBy = "conta")
+    private List<Transacao> transacaoList;
 
 }

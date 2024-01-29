@@ -43,20 +43,14 @@ public class DespesaCartao {
     @Column(name = "data_lancamento", nullable = false)
     private Date dataLancamento = null;
 
-
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
-    //TO-DO
-    /*   @ManyToOne(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "cartao_de_credito_despesa",
-            joinColumns = @JoinColumn(name = "despesa_id"),
-            inverseJoinColumns = @JoinColumn(name = "cartao_id")
-    )*/
     @ManyToOne
-    @JoinColumn(name = "cartao_credito")
-    private CartaoCredito cartaoCredito;
+    @JoinColumn(name = "fatura_id")
+    private Fatura fatura;
+
+
 
 }

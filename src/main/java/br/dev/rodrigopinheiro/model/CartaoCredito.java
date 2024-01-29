@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -32,5 +33,8 @@ public class CartaoCredito {
 
     @Column(name = "dia_vencimento", nullable = false)
     private BigDecimal diaVencimento = BigDecimal.ZERO;
+
+    @OneToMany(mappedBy = "cartaoCredito")
+    private List<Fatura> faturaList;
 
 }
