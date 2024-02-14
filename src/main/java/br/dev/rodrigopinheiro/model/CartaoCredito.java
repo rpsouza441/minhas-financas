@@ -14,7 +14,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Builder
 @Entity(name = "cartao_credito")
 public class CartaoCredito {
 

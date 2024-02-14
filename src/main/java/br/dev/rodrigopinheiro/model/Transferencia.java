@@ -13,7 +13,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Builder
 @Entity(name = "transferencia")
 public class Transferencia {
     @Id

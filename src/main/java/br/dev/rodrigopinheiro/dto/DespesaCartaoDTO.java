@@ -1,7 +1,7 @@
 package br.dev.rodrigopinheiro.dto;
 
-import br.dev.rodrigopinheiro.model.CartaoCredito;
 import br.dev.rodrigopinheiro.model.Categoria;
+import br.dev.rodrigopinheiro.model.Fatura;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,12 +31,10 @@ public class DespesaCartaoDTO {
 
     private Date dataLancamento = null;
 
-    @ManyToOne
-    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
-    @ManyToOne
-    @JoinColumn(name = "cartao_credito")
-    private CartaoCredito cartaoCredito;
+    private Fatura fatura;
+
+
 
 }

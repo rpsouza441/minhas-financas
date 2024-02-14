@@ -19,15 +19,15 @@ import java.util.UUID;
 public class TransferenciaDTO {
 
 
-    private String descricao = "";
+    private String descricao="";
 
-    private String observacao = "";
+    private String observacao= "";
 
-    private BigDecimal valor = BigDecimal.ZERO;
+    private BigDecimal valor= BigDecimal.ZERO;
 
     private boolean recorrente = false;
 
-    private boolean efetivada = false;
+    private boolean efetivada= false;
 
     private Date dataVencimento = null;
 

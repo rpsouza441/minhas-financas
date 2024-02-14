@@ -1,5 +1,7 @@
 package br.dev.rodrigopinheiro.dto;
 
+import br.dev.rodrigopinheiro.model.CartaoCredito;
+import br.dev.rodrigopinheiro.model.DespesaCartao;
 import br.dev.rodrigopinheiro.model.Transacao;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,7 +9,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,11 +16,17 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 @Builder
-public class ContaDTO {
-    private String nome = "";
+public class FaturaDTO {
 
-    private BigDecimal saldo = BigDecimal.ZERO;
+    private String mes = "";
 
-    private List<Transacao> transacaoList;
+    private String ano = "";
+
+    private List<DespesaCartao> despesaCartaoList;
+
+    private CartaoCredito cartaoCredito;
+
+    private Transacao transacao;
+
 
 }
