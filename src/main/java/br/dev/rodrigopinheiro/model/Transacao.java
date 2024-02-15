@@ -7,13 +7,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity(name = "transacao")
+@Entity
+@Table(name = "transacao")
 public class Transacao {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -62,6 +65,18 @@ public class Transacao {
             cascade = CascadeType.ALL)
     //@PrimaryKeyJoinColumn
     private Fatura fatura;
+
+
+    @PrePersist
+    protected void prePersist() {
+        if (this.dataLancamento == null) dataLancamento = Calendar.getInstance().getTime();
+//        if (this.atualizadoEm == null) atualizadoEm = LocalDateTime.now();
+    }
+
+//    @PreUpdate
+//    protected void preUpdate() {
+//        this.atualizadoEm = LocalDateTime.now();
+//    }
 
 
 }

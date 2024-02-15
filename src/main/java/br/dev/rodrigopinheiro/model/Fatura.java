@@ -12,7 +12,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity(name = "fatura")
+@Entity
+@Table(name = "fatura")
 public class Fatura {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

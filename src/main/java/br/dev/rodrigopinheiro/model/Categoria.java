@@ -10,7 +10,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity(name = "categoria")
+@Entity
+@Table(name = "categoria")
 public class Categoria {
 
     @Id

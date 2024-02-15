@@ -16,6 +16,9 @@ import java.util.UUID;
 @Data
 @Builder
 public class ContaDTO {
+
+    private UUID uuid;
+
     private String nome = "";
 
     private BigDecimal saldo = BigDecimal.ZERO;
