@@ -9,11 +9,11 @@ import java.util.UUID;
 public interface ContaService {
     Conta createConta(ContaDTO conta);
 
-    Conta getContaById(UUID userId);
+    Conta getContaById(UUID contaUuid);
 
     List<Conta> getAllContas();
 
     Conta updateConta(ContaDTO conta);
 
-    void deleteConta(UUID userId);
+    void deleteConta(UUID contaUuid);
 }

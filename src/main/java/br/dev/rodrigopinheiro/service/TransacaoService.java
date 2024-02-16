@@ -1,36 +1,21 @@
 package br.dev.rodrigopinheiro.service;
 
+import br.dev.rodrigopinheiro.dto.ContaDTO;
 import br.dev.rodrigopinheiro.dto.TransacaoDTO;
 import br.dev.rodrigopinheiro.model.Conta;
-import br.dev.rodrigopinheiro.model.TipoTransacao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import br.dev.rodrigopinheiro.model.Transacao;
 
-import java.util.Optional;
+import java.util.List;
+import java.util.UUID;
 
-@Service
-public class TransacaoService {
+public interface TransacaoService {
+    Transacao createTransacao(TransacaoDTO transacaoDTO);
 
+    Transacao getTransacaoById(UUID transacaoUuid);
 
-    private final ContaServiceImpl contaService;
+    List<Transacao> getAllTransacoes();
 
-    @Autowired
-    private TransacaoService(ContaServiceImpl contaService) {
-        this.contaService = contaService;
-    }
+    Transacao updateTransacao(TransacaoDTO TransacaoDTO);
 
-    public void efetivarTransacao(TransacaoDTO t) {
-        Optional<Conta> contaOptional = contaService.getContaById(t.getConta().getId());
-        Conta conta= new Conta();
-        if (contaOptional.isPresent()) {
-            conta = contaOptional.get();
-            if (t.getTipoTransacao().equals(TipoTransacao.CREDIT)) {
-                conta.getSaldo().subtract(t.getValor());
-            }
-            contaService.saveConta(conta);
-        }
-
-
-    }
-
+    void deleteTransacao(UUID TransacaoUuid);
 }

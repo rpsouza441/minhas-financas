@@ -36,35 +36,10 @@ public class TransacaoDTO {
 
     private Categoria categoria;
 
-    private Conta conta;
+    private UUID contaUuid;
 
     private Fatura fatura;
 
-    public TransacaoDTO toDTO(Transacao transacao) {
-       return  TransacaoDTO.builder()
-               .descricao(transacao.getDescricao())
-               .observacao(transacao.getObservacao())
-               .valor(transacao.getValor())
-               .tipoTransacao(transacao.getTipoTransacao())
-               .recorrente(transacao.isRecorrente())
-               .efetivada(transacao.isEfetivada())
-               .dataVencimento(transacao.getDataVencimento())
-               .dataLancamento(transacao.getDataEfetivado())
-               .categoria(getCategoria())
-               .conta(getConta())
-               .fatura(getFatura())
-               .build();
-
-    }
-
-    public Transacao toTransacao(TransacaoDTO transacaoDTO){
-        return new Transacao(null, transacaoDTO.getDescricao(), transacaoDTO.observacao, transacaoDTO.valor,
-                transacaoDTO.tipoTransacao, transacaoDTO.recorrente, transacaoDTO.efetivada, transacaoDTO.dataVencimento,
-                transacaoDTO.dataLancamento, transacaoDTO.dataEfetivado, transacaoDTO.categoria, transacaoDTO.conta,
-                transacaoDTO.fatura);
-
-
-    }
 
 
 }
