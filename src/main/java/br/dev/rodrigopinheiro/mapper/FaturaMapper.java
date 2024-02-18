@@ -13,6 +13,5 @@ public interface FaturaMapper {
     FaturaMapper INSTANCE = Mappers.getMapper(FaturaMapper.class);
     public Fatura fromDTO(FaturaDTO transacaoDTO);
 
-    @Mapping(target = "contaUuid", source = "transacao.conta.uuid")
     public FaturaDTO toDTO(Fatura transacao);
 }
