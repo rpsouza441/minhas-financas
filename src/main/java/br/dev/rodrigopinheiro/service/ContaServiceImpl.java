@@ -41,24 +41,20 @@ public class ContaServiceImpl implements ContaService {
     @Override
     public Conta updateConta(ContaDTO contaDTO) {
         Conta contaExistente = contaRepository.findById(contaDTO.getUuid()).get();
-        contaExistente.setUuid(contaDTO.getUuid());
-        contaExistente.setNome(contaDTO.getNome());
-        contaExistente.setSaldo(contaDTO.getSaldo());
-        return contaRepository.save(contaExistente);
+
+        return contaRepository.save(atualizaCampos(contaExistente, contaMapper.fromDTO(contaDTO)));
     }
 
     public Conta updateConta(Conta conta) {
         Conta contaExistente = contaRepository.findById(conta.getUuid()).get();
-        contaExistente.setUuid(conta.getUuid());
-        contaExistente.setNome(conta.getNome());
-        contaExistente.setSaldo(conta.getSaldo());
-        return contaRepository.save(contaExistente);
+
+        return contaRepository.save(atualizaCampos(contaExistente, conta));
     }
 
 
     @Override
-    public void deleteConta(UUID id) {
-        contaRepository.deleteById(id);
+    public void deleteConta(UUID uuid) {
+        contaRepository.deleteById(uuid);
     }
 
     public Conta atualizarSaldo(TransacaoDTO transacaoDTO) {
@@ -72,5 +68,13 @@ public class ContaServiceImpl implements ContaService {
             }
         }
         return contaRepository.save(conta);
+    }
+
+
+    private Conta atualizaCampos(Conta contaExistente, Conta contaAtualizada){
+        contaExistente.setUuid(contaAtualizada.getUuid());
+        contaExistente.setNome(contaAtualizada.getNome());
+        contaExistente.setSaldo(contaAtualizada.getSaldo());
+        return contaExistente;
     }
 }

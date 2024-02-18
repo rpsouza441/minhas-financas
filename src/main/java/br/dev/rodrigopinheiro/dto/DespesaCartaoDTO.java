@@ -17,6 +17,9 @@ import java.util.UUID;
 @Data
 @Builder
 public class DespesaCartaoDTO {
+
+    private UUID uuid;
+
     private String descricao = "";
 
     private String observacao = "";
@@ -34,7 +37,6 @@ public class DespesaCartaoDTO {
     private Categoria categoria;
 
     private Fatura fatura;
-
 
 
 }

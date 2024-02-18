@@ -16,6 +16,8 @@ import java.util.UUID;
 @Data
 @Builder
 public class TransacaoDTO {
+
+    private UUID uuid;
     private String descricao = "";
 
     private String observacao = "";

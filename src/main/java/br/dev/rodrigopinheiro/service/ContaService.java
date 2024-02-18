@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ContaService {
-    Conta createConta(ContaDTO conta);
+    Conta createConta(ContaDTO contaDTO);
 
     Conta getContaById(UUID contaUuid);
 
     List<Conta> getAllContas();
 
-    Conta updateConta(ContaDTO conta);
+    Conta updateConta(ContaDTO contaDTO);
 
     void deleteConta(UUID contaUuid);
 }

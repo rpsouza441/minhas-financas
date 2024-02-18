@@ -13,28 +13,22 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+
+@RequiredArgsConstructor
 @Service
 public class TransacaoServiceImpl implements TransacaoService {
 
-
-    private final ContaServiceImpl contaService;
 
     private final TransacaoRepository transacaoRepository;
 
     private final TransacaoMapper transacaoMapper;
 
-    @Autowired
-    public TransacaoServiceImpl(ContaServiceImpl contaService, TransacaoRepository transacaoRepository, TransacaoMapper transacaoMapper) {
-        this.contaService = contaService;
-        this.transacaoRepository = transacaoRepository;
-        this.transacaoMapper = transacaoMapper;
-    }
+
 
 
     @Override
     public Transacao createTransacao(TransacaoDTO transacaoDTO) {
         Transacao transacao = transacaoMapper.fromDTO(transacaoDTO);
-        transacao.setConta(contaService.atualizarSaldo(transacaoDTO));
 
         return transacaoRepository.save(transacao);
 
@@ -42,21 +36,36 @@ public class TransacaoServiceImpl implements TransacaoService {
 
     @Override
     public Transacao getTransacaoById(UUID transacaoUuid) {
-        return null;
+
+        return transacaoRepository.findById(transacaoUuid).get();
     }
 
     @Override
     public List<Transacao> getAllTransacoes() {
-        return null;
+        return transacaoRepository.findAll();
     }
 
     @Override
-    public Transacao updateTransacao(TransacaoDTO TransacaoDTO) {
-        return null;
+    public Transacao updateTransacao(TransacaoDTO transacaoDTO) {
+        Transacao transacaoExistente = transacaoRepository.findById(transacaoDTO.getUuid()).get();
+
+        transacaoExistente.setDescricao(transacaoDTO.getDescricao());
+        transacaoExistente.setObservacao(transacaoDTO.getObservacao());
+        transacaoExistente.setValor(transacaoDTO.getValor());
+        transacaoExistente.setTipoTransacao(transacaoDTO.getTipoTransacao());
+        transacaoExistente.setRecorrente(transacaoDTO.isRecorrente());
+        transacaoExistente.setEfetivada(transacaoDTO.isEfetivada());
+        transacaoExistente.setDataVencimento(transacaoDTO.getDataVencimento());
+        transacaoExistente.setDataLancamento(transacaoDTO.getDataLancamento());
+
+
+        return transacaoExistente;
     }
 
     @Override
-    public void deleteTransacao(UUID TransacaoUuid) {
+    public void deleteTransacao(UUID transacaoUuid) {
+
+        transacaoRepository.deleteById(transacaoUuid);
 
     }
 

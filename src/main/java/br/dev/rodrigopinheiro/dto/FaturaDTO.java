@@ -17,6 +17,7 @@ import java.util.UUID;
 @Data
 @Builder
 public class FaturaDTO {
+    private UUID uuid;
 
     private String mes = "";
 

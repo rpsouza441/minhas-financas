@@ -15,7 +15,7 @@ public interface TransacaoService {
 
     List<Transacao> getAllTransacoes();
 
-    Transacao updateTransacao(TransacaoDTO TransacaoDTO);
+    Transacao updateTransacao(TransacaoDTO transacaoDTO);
 
     void deleteTransacao(UUID TransacaoUuid);
 }

@@ -20,7 +20,7 @@ public class CartaoCredito {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private UUID uuid;
 
     @Column(name = "nome", nullable = true, length = 256)
     private String nome = "";

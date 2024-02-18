@@ -17,7 +17,7 @@ import java.util.UUID;
 public class Fatura {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private UUID uuid;
 
     @Column(name = "mes", nullable = true, length = 256)
     private String mes = "";

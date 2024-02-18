@@ -17,6 +17,8 @@ import java.util.UUID;
 @Builder
 public class CartaoCreditoDTO {
 
+    private UUID uuid;
+
     private String nome = "";
 
     private BigDecimal limite = BigDecimal.ZERO;
